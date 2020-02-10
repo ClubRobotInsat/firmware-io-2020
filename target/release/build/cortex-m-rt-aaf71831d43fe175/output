@@ -1,3 +1,0 @@
-cargo:rustc-link-search=/home/robot/Desktop/firmware-io-2020/target/release/build/cortex-m-rt-aaf71831d43fe175/out
-cargo:rerun-if-changed=build.rs
-cargo:rerun-if-changed=link.x.in

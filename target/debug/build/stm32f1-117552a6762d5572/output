@@ -1,3 +1,0 @@
-cargo:rustc-link-search=/home/robot/Desktop/firmware-io-2020/target/debug/build/stm32f1-117552a6762d5572/out
-cargo:rerun-if-changed=src/stm32f103/device.x
-cargo:rerun-if-changed=build.rs
