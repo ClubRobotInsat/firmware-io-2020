@@ -1,0 +1,12 @@
+/home/robot/Desktop/firmware-io-2020/target/release/deps/cortex_m-44a9e23b96324efb.rmeta: /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/lib.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/macros.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/mod.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/dwt.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/nvic.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/scb.rs
+
+/home/robot/Desktop/firmware-io-2020/target/release/deps/libcortex_m-44a9e23b96324efb.rlib: /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/lib.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/macros.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/mod.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/dwt.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/nvic.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/scb.rs
+
+/home/robot/Desktop/firmware-io-2020/target/release/deps/cortex_m-44a9e23b96324efb.d: /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/lib.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/macros.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/mod.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/dwt.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/nvic.rs /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/scb.rs
+
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/lib.rs:
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/macros.rs:
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/mod.rs:
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/dwt.rs:
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/nvic.rs:
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/cortex-m-0.5.10/src/peripheral/scb.rs:

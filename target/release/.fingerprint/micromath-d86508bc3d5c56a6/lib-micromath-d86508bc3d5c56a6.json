@@ -1,0 +1,1 @@
+{"rustc":4519320879802507334,"features":"[\"default\", \"quaternion\", \"statistics\", \"vector\"]","target":9972704638240698675,"profile":14262939749342047399,"path":12832535727982250474,"deps":[[13380310058312352107,"generic_array",false,2705742614909661911]],"local":[{"Precalculated":"0.3.1"}],"rustflags":[],"metadata":11802777084664654911}

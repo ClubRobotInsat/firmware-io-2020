@@ -1,0 +1,58 @@
+[package]
+authors = ["Lee Lup Yuen <luppy@appkaki.com>, Paul Florence <perso@florencepaul.com>"]
+categories = ["embedded", "no-std"]
+description = "A sample Rust application for STM32 Black Pill microcontrollers"
+keywords = ["arm", "cortex-m", "stm32", "bluepill"]
+license = "MIT OR Apache-2.0"
+name = "stm32-black-pill-rust"
+repository = "https://git.florencepaul.com/gbip/black_pill"
+version = "0.3.2"
+edition = "2018"
+
+[dependencies]
+embedded-hal = "=0.2.2"
+nb = "0.1.1"
+numtoa = "0.2.3"
+librobot = {git="https://github.com/ClubRobotInsat/librobot", default-features=false}
+w5500 = "0.1.5"
+heapless = "0.4.2"
+pwm-speaker = {git="https://github.com/gbip/pwm-speaker" }
+
+[dependencies.arrayvec]
+default-features = false
+version = "0.4.7"
+
+[dependencies.cortex-m]
+version = "0.6"
+
+[dependencies.cortex-m-rt]
+features = ["device"]
+version = "0.6.7"
+
+[dependencies.cortex-m-semihosting]
+version = "0.3.0"
+
+[dependencies.panic-semihosting]
+version = "0.5.0"
+
+[dependencies.pid_control]
+branch = "genericity"
+git = "https://github.com/gbip/pid_control-rs"
+
+[dependencies.qei]
+version = "1.0.1"
+
+[dependencies.stm32f1xx-hal]
+features = ["rt","stm32f103"]
+version = "0.2"
+
+[profile.release]
+codegen-units = 1
+debug = true
+lto = true
+incremental = false
+
+[features]
+
+primary = ["librobot/primary"]
+secondary = ["librobot/secondary"]

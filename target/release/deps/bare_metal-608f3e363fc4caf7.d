@@ -1,0 +1,7 @@
+/home/robot/Desktop/firmware-io-2020/target/release/deps/bare_metal-608f3e363fc4caf7.rmeta: /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/bare-metal-0.2.4/src/lib.rs
+
+/home/robot/Desktop/firmware-io-2020/target/release/deps/libbare_metal-608f3e363fc4caf7.rlib: /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/bare-metal-0.2.4/src/lib.rs
+
+/home/robot/Desktop/firmware-io-2020/target/release/deps/bare_metal-608f3e363fc4caf7.d: /home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/bare-metal-0.2.4/src/lib.rs
+
+/home/robot/.cargo/registry/src/github.com-1ecc6299db9ec823/bare-metal-0.2.4/src/lib.rs:

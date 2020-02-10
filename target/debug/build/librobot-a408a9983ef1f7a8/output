@@ -1,0 +1,24 @@
+TARGET = Some("x86_64-unknown-linux-gnu")
+OPT_LEVEL = Some("0")
+HOST = Some("x86_64-unknown-linux-gnu")
+CC_x86_64-unknown-linux-gnu = None
+CC_x86_64_unknown_linux_gnu = None
+HOST_CC = None
+CC = None
+CFLAGS_x86_64-unknown-linux-gnu = None
+CFLAGS_x86_64_unknown_linux_gnu = None
+HOST_CFLAGS = None
+CFLAGS = None
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some("true")
+CARGO_CFG_TARGET_FEATURE = Some("fxsr,sse,sse2")
+running: "cc" "-O0" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-m64" "-std=c11" "-o" "/home/robot/Desktop/firmware-io-2020/target/debug/build/librobot-a408a9983ef1f7a8/out/c_src/SharedWithRust.o" "-c" "c_src/SharedWithRust.c"
+exit code: 0
+AR_x86_64-unknown-linux-gnu = None
+AR_x86_64_unknown_linux_gnu = None
+HOST_AR = None
+AR = None
+running: "ar" "crs" "/home/robot/Desktop/firmware-io-2020/target/debug/build/librobot-a408a9983ef1f7a8/out/libSharedWithRust.a" "/home/robot/Desktop/firmware-io-2020/target/debug/build/librobot-a408a9983ef1f7a8/out/c_src/SharedWithRust.o"
+exit code: 0
+cargo:rustc-link-lib=static=SharedWithRust
+cargo:rustc-link-search=native=/home/robot/Desktop/firmware-io-2020/target/debug/build/librobot-a408a9983ef1f7a8/out
