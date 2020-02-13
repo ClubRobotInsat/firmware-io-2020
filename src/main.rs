@@ -68,42 +68,6 @@ fn send_tirette_state<T, K>(
     }
 }
 
-fn send_pneumatic_state<T, K>(
-    robot: &mut Robot,
-    spi: &mut Spi<T, K>,
-    eth: &mut W5500,
-    ip: &IpAddress,
-) where
-    Spi<T, K>: FullDuplex<u8>,
-{
-    let pump = if robot.pump.is_set_high() {
-        IOState::On
-    } else {
-        IOState::Off
-    };
-
-    let mut valves = [IOState::On; 4];
-    for (state, valve) in robot.valves.iter().zip(valves.iter_mut()) {
-        *valve = if state.is_set_high() {
-            IOState::On
-        } else {
-            IOState::Off
-        };
-    }
-
-    let state = Pneumatic { pump, valves };
-
-    if let Ok(data) = state.to_string::<U2048>() {
-        if let Ok(_) = eth.send_udp(
-            spi,
-            Socket1,
-            ELEC_LISTENING_PORT + ID_PNEUMATIC,
-            ip,
-            INFO_LISTENING_PORT + ID_PNEUMATIC,
-            &data.as_bytes(),
-        ) {}
-    }
-}
 
 fn toogle<T>(state: &mut bool, pin: &mut T)
 where
@@ -205,43 +169,6 @@ fn main() -> ! {
                 }
                 Err(_) => {
                     //panic!("{:#?}", e)
-                }
-            }
-        }
-        if let Ok(Some((ip, _, size))) = eth.try_receive_udp(&mut spi, Socket1, &mut buffer) {
-            /*hprintln!(
-                "PNEUM data: {:#x?}",
-                core::str::from_utf8(&buffer[0..size]).unwrap()
-            )
-            .unwrap();*/
-            //hprintln!("1.0\n").unwrap();
-            match Pneumatic::from_json_slice(&buffer[0..size]) {
-                Ok(pneumatic) => {
-                    //hprintln!("1.1\n").unwrap();
-
-                    // Gestion des vannes
-                    toogle(&mut led_state, &mut robot.led_communication);
-
-                    for (state, valve) in pneumatic.valves.iter().zip(robot.valves.iter_mut()) {
-                        if let IOState::On = state {
-                            valve.set_high();
-                        } else {
-                            valve.set_low();
-                        }
-                    }
-
-                    // Gestion des pompes
-                    if let IOState::On = pneumatic.pump {
-                        robot.pump.set_high();
-                    } else {
-                        robot.pump.set_low();
-                    }
-
-                    send_pneumatic_state(&mut robot, &mut spi, &mut eth, &ip);
-                }
-                Err(_e) => {
-                    //hprintln!("1.2\n").unwrap();
-                    //panic!("{}, {:#?}", String::from_utf8(str_vec).unwrap(), e)
                 }
             }
         }
