@@ -1,0 +1,11 @@
+# https://doc.rust-lang.org/cargo/reference/config.html
+
+[target.thumbv7m-none-eabi]
+runner = 'arm-none-eabi-gdb'
+rustflags = [
+  "-C", "link-arg=-Tlink.x",
+   "-C", "linker=rust-lld",
+]
+
+[build]
+target = "thumbv7m-none-eabi"
