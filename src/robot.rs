@@ -30,10 +30,19 @@ pub type SpiPins = (
 pub struct Robot {
     pub delay: Delay,
     pub led_communication: PC14<Output<PushPull>>,
-    pub pump: PA4<Output<PushPull>>,
-    pub valves: [PBx<Output<PushPull>>; 4],
+    //pub pump: PA4<Output<PushPull>>, legacy
+    //pub valves: [PBx<Output<PushPull>>; 4], legacy
     pub tirette: PB1<Input<PullDown>>,
     pub speaker: Speaker,
+
+    //Interupteurs fin de course.
+    pub limit_left_down: PB9<Input<PullDown>>,
+    pub limit_left_middle: PB8<Input<PullDown>>,
+    pub limit_left_high: PB7<Input<PullDown>>,
+    pub limit_right_down: PB6<Input<PullDown>>,
+    pub limit_right_middle: PB5<Input<PullDown>>,
+    pub limit_right_high: PB4<Input<PullDown>>,
+
 }
 
 pub fn init_peripherals(
@@ -71,7 +80,8 @@ pub fn init_peripherals(
     let miso = gpioa.pa6.into_floating_input(&mut gpioa.crl);
     let mosi = gpioa.pa7.into_alternate_push_pull(&mut gpioa.crl);
 
-    let vannes = [
+    //legacy
+    /*let vannes = [
         gpiob.pb12.into_push_pull_output(&mut gpiob.crh).downgrade(),
         gpiob.pb14.into_push_pull_output(&mut gpiob.crh).downgrade(),
         gpiob.pb15.into_push_pull_output(&mut gpiob.crh).downgrade(),
@@ -82,9 +92,9 @@ pub fn init_peripherals(
         gpiob.pb10.into_push_pull_output(&mut gpiob.crh).downgrade(),
         gpiob.pb11.into_push_pull_output(&mut gpiob.crh).downgrade(),
         */
-    ];
+    ];*/
 
-    let pump = gpioa.pa4.into_push_pull_output(&mut gpioa.crl);
+    //let pump = gpioa.pa4.into_push_pull_output(&mut gpioa.crl); legacy
     //let pump_right = gpiob.pb0.into_push_pull_output(&mut gpiob.crl);
 
     {
@@ -97,6 +107,14 @@ pub fn init_peripherals(
     let led_communication = gpioc.pc14.into_push_pull_output(&mut gpioc.crh);
 
     let tirette = gpiob.pb1.into_pull_down_input(&mut gpiob.crl);
+
+    // Config I/O pour les capteurs fins de courses
+    let limit_left_down = gpiob.pb9.into_pull_down_input(&mut gpiob.crh);
+    let limit_left_middle = gpiob.pb8.into_pull_down_input(&mut gpiob.crh);
+    let limit_left_high = gpiob.pb7.into_pull_down_input(&mut gpiob.crl);
+    let limit_right_down = gpiob.pb6.into_pull_down_input(&mut gpiob.crl);
+    let limit_right_middle = gpiob.pb5.into_pull_down_input(&mut gpiob.crl);
+    let limit_right_high = gpiob.pb4.into_pull_down_input(&mut gpiob.crl);
 
     let spi = Spi::spi1(
         chip.SPI1,
@@ -130,10 +148,15 @@ pub fn init_peripherals(
         Robot {
             delay,
             led_communication,
-            pump,
-            valves: vannes,
             tirette,
             speaker: Speaker::new(speaker_pwm, clocks),
+
+            limit_left_down,
+            limit_left_middle,
+            limit_left_high,
+            limit_right_down,
+            limit_right_middle,
+            limit_right_high,
         },
         spi,
         cs,

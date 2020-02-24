@@ -35,7 +35,7 @@ use librobot::transmission::{
 use pwm_speaker::songs::*;
 use w5500::Socket::*;
 
-fn send_tirette_state<T, K>(
+fn send_switch_state<T, K>(
     robot: &mut Robot,
     spi: &mut Spi<T, K>,
     eth: &mut W5500,
@@ -44,15 +44,61 @@ fn send_tirette_state<T, K>(
 ) where
     Spi<T, K>: FullDuplex<u8>,
 {
+    //Tirette
     let tirette = if robot.tirette.is_low() {
         TriggerState::Waiting
     } else {
         TriggerState::Triggered
     };
 
+    //Pince gauche
+    let limit_left_down = if robot.limit_left_down.is_low() {
+        TriggerState::Waiting
+    } else {
+        TriggerState::Triggered
+    };
+
+    let  limit_left_middle = if robot.limit_left_middle.is_low() {
+        TriggerState::Waiting
+    } else {
+        TriggerState::Triggered
+    };
+
+    let  limit_left_high = if robot.limit_left_high.is_low() {
+        TriggerState::Waiting
+    } else {
+        TriggerState::Triggered
+    };
+
+    //Pince droite
+    let  limit_right_down = if robot.limit_right_down.is_low() {
+        TriggerState::Waiting
+    } else {
+        TriggerState::Triggered
+    };
+
+    let  limit_right_middle = if robot.limit_right_middle.is_low() {
+        TriggerState::Waiting
+    } else {
+        TriggerState::Triggered
+    };
+
+    let  limit_right_high = if robot.limit_right_high.is_low() {
+        TriggerState::Waiting
+    } else {
+        TriggerState::Triggered
+    };
+
+    //Preparation du JSON
     let state = IO {
         buzzer: *buzzer_state,
         tirette,
+        limit_left_down,
+        limit_left_middle,
+        limit_left_high,
+        limit_right_down,
+        limit_right_middle,
+        limit_right_high,
     };
 
     if let Ok(data) = state.to_string::<U2048>() {
@@ -119,7 +165,7 @@ fn main() -> ! {
     loop {
         if robot.tirette.is_low() && !tirette_already_detected {
             tirette_already_detected = true;
-            send_tirette_state(
+            send_switch_state(
                 &mut robot,
                 &mut spi,
                 &mut eth,
@@ -128,7 +174,7 @@ fn main() -> ! {
             )
         } else if robot.tirette.is_high() && tirette_already_detected {
             tirette_already_detected = false;
-            send_tirette_state(
+            send_switch_state(
                 &mut robot,
                 &mut spi,
                 &mut eth,
@@ -165,7 +211,7 @@ fn main() -> ! {
 
                         _ => {}
                     }
-                    send_tirette_state(&mut robot, &mut spi, &mut eth, &mut buzzer_state, &ip);
+                    send_switch_state(&mut robot, &mut spi, &mut eth, &mut buzzer_state, &ip);
                 }
                 Err(_) => {
                     //panic!("{:#?}", e)
