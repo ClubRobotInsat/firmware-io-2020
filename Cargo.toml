@@ -13,7 +13,7 @@ edition = "2018"
 embedded-hal = "=0.2.2"
 nb = "0.1.1"
 numtoa = "0.2.3"
-librobot = {git="https://github.com/ClubRobotInsat/librobot", default-features=false, branch="dev-new-pid"}
+librobot = {git="https://github.com/ClubRobotInsat/librobot", default-features=false}
 w5500 = "0.1.5"
 heapless = "0.4.2"
 pwm-speaker = {git="https://github.com/gbip/pwm-speaker" }
