@@ -15,15 +15,18 @@ Forked from firmware-io (2019). Club Robot INSA Toulouse 2020.
 ## Affectation des pins
 Les sens gauche et droite sont donnés dans le sens du robot. 
 ```
-B9 --> Capteur fin de course gauche bas.
-B8 --> Capteur fin de course gauche milieu.
-B7 --> Capteur fin de course gauche haut.
-B6 --> Capteur fin de course droite bas.
-B5 --> Capteur fin de course droite milieu.
-B4 --> Capteur fin de course droite haut.
+B9 --> Capteur fin de course gauche bas (Pull down).
+B8 --> Capteur fin de course gauche milieu (Pull down).
+B7 --> Capteur fin de course gauche haut (Pull down).
+B6 --> Capteur fin de course droite bas (Pull down).
+B5 --> Capteur fin de course droite milieu (Pull down).
+B4 --> Capteur fin de course droite haut (Pull down).
 
 B1 --> Tirette.
 C14 --> LED Communication.
+
+B12 --> LED éclairage 1.
+B14 --> LED éclairage 2.
 ```
 
 ## Compilation

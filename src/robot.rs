@@ -43,6 +43,10 @@ pub struct Robot {
     pub limit_right_middle: PB5<Input<PullDown>>,
     pub limit_right_high: PB4<Input<PullDown>>,
 
+    //Led d'éclairage
+    pub camera_led_1: PB12<Output<PushPull>>,
+    pub camera_led_2: PB14<Output<PushPull>>,
+
 }
 
 pub fn init_peripherals(
@@ -80,23 +84,6 @@ pub fn init_peripherals(
     let miso = gpioa.pa6.into_floating_input(&mut gpioa.crl);
     let mosi = gpioa.pa7.into_alternate_push_pull(&mut gpioa.crl);
 
-    //legacy
-    /*let vannes = [
-        gpiob.pb12.into_push_pull_output(&mut gpiob.crh).downgrade(),
-        gpiob.pb14.into_push_pull_output(&mut gpiob.crh).downgrade(),
-        gpiob.pb15.into_push_pull_output(&mut gpiob.crh).downgrade(),
-        gpiob.pb5.into_push_pull_output(&mut gpiob.crl).downgrade(),
-        /*
-        gpiob.pb6.into_push_pull_output(&mut gpiob.crl).downgrade(),
-        gpiob.pb8.into_push_pull_output(&mut gpiob.crh).downgrade(),
-        gpiob.pb10.into_push_pull_output(&mut gpiob.crh).downgrade(),
-        gpiob.pb11.into_push_pull_output(&mut gpiob.crh).downgrade(),
-        */
-    ];*/
-
-    //let pump = gpioa.pa4.into_push_pull_output(&mut gpioa.crl); legacy
-    //let pump_right = gpiob.pb0.into_push_pull_output(&mut gpiob.crl);
-
     {
         // Hardfault LED
         let mut pin = gpioc.pc15.into_push_pull_output(&mut gpioc.crh);
@@ -105,6 +92,10 @@ pub fn init_peripherals(
         let mut _led = gpioc.pc13.into_push_pull_output(&mut gpioc.crh);
     }
     let led_communication = gpioc.pc14.into_push_pull_output(&mut gpioc.crh);
+
+    let camera_led_1 = gpiob.pb12.into_push_pull_output(&mut gpiob.crh);
+    let camera_led_2 = gpiob.pb14.into_push_pull_output(&mut gpiob.crh);
+
 
     let tirette = gpiob.pb1.into_pull_down_input(&mut gpiob.crl);
 
@@ -157,6 +148,9 @@ pub fn init_peripherals(
             limit_right_down,
             limit_right_middle,
             limit_right_high,
+
+            camera_led_1,
+            camera_led_2,
         },
         spi,
         cs,

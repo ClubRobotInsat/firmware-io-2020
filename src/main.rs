@@ -29,7 +29,7 @@ use librobot::transmission::id::*;
 use librobot::transmission::io::IOState;
 use librobot::transmission::{
     eth::{init_eth, listen_on, SOCKET_UDP},
-    io::{BuzzerState, Pneumatic, TriggerState, IO},
+    io::{BuzzerState, camera_led, TriggerState, IO},
     Jsonizable,
 };
 use pwm_speaker::songs::*;
@@ -159,6 +159,9 @@ fn main() -> ! {
     let mut led_state = false;
 
     robot.led_communication.set_low();
+
+    robot.camera_led_1.set_high();
+    robot.camera_led_2.set_high();
 
     robot.speaker.play_score(&SUCCESS_SONG, &mut robot.delay);
 
